@@ -7,12 +7,20 @@ var Todo = Backbone.Model.extend({
     this.on('change:completed', function() {
       console.log(' - The completed status of this todo model has changed');
     });
+    this.on('invalid', function(model, error) {
+      console.log(error);
+    })
   },
   defaults: {
     title: '',
     completed: false
   },
   setTitle: function(newTitle){ this.set({ title: newTitle });
+  },
+  validate: function(attribs){ 
+    if (attribs.title === undefined) {
+      return "Error: Remember to set a title for your todo.";
+    }
   }
 });
 
@@ -26,7 +34,13 @@ var toodles2 = new Todo({
   completed: true
 });
 
+var toodles3 = new Todo({
+  completed: true
+});
+
 var toodlesProperties = toodles.toJSON();
+
+toodles3.set('completed', true, {validate: true});
 
 console.log(toodlesProperties);
 
