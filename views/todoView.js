@@ -11,6 +11,8 @@ app.TodoView = Backbone.View.extend({
 
   // The DOM events specific to an item.
   events: {
+    'click .toggle': 'togglecompleted',
+    'click .destroy': 'clear',
     'dblclick label': 'edit',
     'keypress .edit': 'updateOnEnter',
     'blur .edit': 'close'
@@ -19,7 +21,9 @@ app.TodoView = Backbone.View.extend({
   // The TodoView listens for changes to its model, rerendering. Since there's // a one-to-one correspondence between a **Todo** and a **TodoView** in this // app, we set a direct reference on the model for convenience.
   
   initialize: function() {
-    this.listenTo(this.model, 'change', this.render); 
+    this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'destroy', this.remove);
+    this.listenTo(this.model, 'visible', this.toggleVisible);
   },
   
   // Rerenders the titles of the todo item.
@@ -30,6 +34,9 @@ app.TodoView = Backbone.View.extend({
         this.model.toJSON() 
       ) 
     );
+
+    this.$el.toggleClass( 'completed', this.model.get('completed') ); // NEW
+    this.toggleVisible();
     this.$input = this.$('.edit');
   
     return this;
@@ -40,6 +47,20 @@ app.TodoView = Backbone.View.extend({
     this.$el.addClass('editing'); 
     this.$input.focus();
   },
+
+  toggleVisible : function () {
+    this.$el.toggleClass( 'hidden', this.isHidden());
+  },
+
+  isHidden : function () {
+    var isCompleted = this.model.get('completed');
+    return ( // hidden cases only
+      (!isCompleted && app.TodoFilter === 'completed')
+      || 
+      (isCompleted && app.TodoFilter === 'active')
+    );
+  },
+
     
   // Close the `"editing"` mode, saving changes to the todo.
   close: function() {
@@ -47,6 +68,8 @@ app.TodoView = Backbone.View.extend({
     
     if ( value ) {
       this.model.save({ title: value });
+    } else {
+      this.clear();
     }
 
     this.$el.removeClass('editing'); 
@@ -57,6 +80,14 @@ app.TodoView = Backbone.View.extend({
     if ( e.which === ENTER_KEY ) {
       this.close(); 
     }
+  },
+
+  clear: function() {
+    this.model.destroy();
+  },
+
+  togglecompleted: function() {
+    this.model.toggle();
   }
 
 });
