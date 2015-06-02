@@ -1,6 +1,7 @@
-var app = app || {};
 
-app.TodoList = Backbone.Collection.extend({
+var app = app || {}; // Todo Collection
+
+var TodoList = Backbone.Collection.extend({
 
     model: app.Todo,
 
@@ -29,3 +30,6 @@ app.TodoList = Backbone.Collection.extend({
     }
 
 });
+
+// Create our global collection of **Todos**.
+app.Todos = new TodoList();
