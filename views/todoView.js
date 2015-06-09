@@ -11,7 +11,7 @@ app.TodoView = Backbone.View.extend({
 
   // The DOM events specific to an item.
   events: {
-    'click .toggle': 'togglecompleted',
+    'click .toggle': 'toggleCompleted',
     'click .destroy': 'clear',
     'dblclick label': 'edit',
     'keypress .edit': 'updateOnEnter',
@@ -48,11 +48,11 @@ app.TodoView = Backbone.View.extend({
     this.$input.focus();
   },
 
-  toggleVisible : function () {
+  toggleVisible: function () {
     this.$el.toggleClass( 'hidden', this.isHidden());
   },
 
-  isHidden : function () {
+  isHidden: function () {
     var isCompleted = this.model.get('completed');
     return ( // hidden cases only
       (!isCompleted && app.TodoFilter === 'completed')
@@ -86,7 +86,7 @@ app.TodoView = Backbone.View.extend({
     this.model.destroy();
   },
 
-  togglecompleted: function() {
+  toggleCompleted: function() {
     this.model.toggle();
   }
 
