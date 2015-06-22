@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="lib/base.css">
+    <link rel="stylesheet" href="lib/book.css">
 </head>
 <body>
 
-<section id="todoapp"> <header id="header">
+<section id="bookapp"> 
 
-    <h1>Todos los To-dos</h1>
-
-    <input id="new-todo" placeholder="What needs to be done?" autofocus> </header>
+    <header id="header">
+    <h1>Books</h1>
+    <input id="new-todo" placeholder="What needs to be done?" autofocus> 
+    </header>
 
     <section id="main">
         <input id="toggle-all" type="checkbox">
         <label for="toggle-all">Mark all as complete</label>
         <ul id="todo-list">
-            
         </ul>
     </section>
 
@@ -60,11 +60,11 @@
 <script src="lib/underscore-min.js"></script>
 <script src="lib/backbone-min.js"></script>
 <script src="lib/backbone.localStorage.js"></script>
-<script src="models/todo.js"></script>
+<script src="models/book.js"></script>
 <script src="collections/todoList.js"></script>
 <script src="views/todoView.js"></script>
-<script src="views/appView.js"></script>
+<script src="views/bookAppView.js"></script>
 <script src="routers/router.js"></script>
-<script src="app.js"></script>
+<script src="books.js"></script>
 </body>
 </html>
