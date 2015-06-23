@@ -10,7 +10,7 @@ bookApp.LibraryView = Backbone.View.extend({
     },
 
     events: {
-        'click #add': 'addBook',
+        'click #add': 'addBook'
     },
 
     addBook: function(e) {
