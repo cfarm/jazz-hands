@@ -5,6 +5,7 @@ bookApp.LibraryView = Backbone.View.extend({
 
     initialize: function( initialBooks ) {
         this.collection = new bookApp.Library( initialBooks );
+        this.listenTo( this.collection, 'add', this.renderBook );
         this.render();
     },
 
