@@ -2,11 +2,11 @@ var bookApp = bookApp || {};
 
 $(function() {
     var books = [
-        { title: 'JavaScript: The Good Parts', author: 'Douglas Crockford', releaseDate: '2008', keywords: 'JavaScript Programming' },
-        { title: 'The Little Book on CoffeeScript', author: 'Alex MacCaw', releaseDate: '2012', keywords: 'CoffeeScript Programming' },
-        { title: 'Scala for the Impatient', author: 'Cay S. Horstmann', releaseDate: '2012', keywords: 'Scala Programming' },
-        { title: 'American Psycho', author: 'Bret Easton Ellis', releaseDate: '1991', keywords: 'Novel Splatter' },
-        { title: 'Eloquent JavaScript', author: 'Marijn Haverbeke', releaseDate: '2011', keywords: 'JavaScript Programming' }
+        { title: 'Slam it to your left', author: 'Baby Spice', releaseDate: '2008', keywords: 'JavaScript Programming' },
+        { title: 'If you\'re having a good time', author: 'Alex MacCaw', releaseDate: '2012', keywords: 'CoffeeScript Programming' },
+        { title: 'Shake it to your right', author: 'Cay S. Horstmann', releaseDate: '2012', keywords: 'Scala Programming' },
+        { title: 'If you know that you feel fine', author: 'Sporty', releaseDate: '1991', keywords: 'Novel Splatter' },
+        { title: 'Chicas to the left', author: 'Hi C YA hold tight', releaseDate: '2011', keywords: 'JavaScript Programming' }
     ];
 
     new bookApp.LibraryView( books );

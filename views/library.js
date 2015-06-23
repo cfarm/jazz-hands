@@ -17,7 +17,7 @@ bookApp.LibraryView = Backbone.View.extend({
         e.preventDefault();
 
         var $form = $('#addBook');
-        var newBook = {};
+        var formValues = {};
 
         // get values from form 
         $form.find('input').each(function(index, element) {
@@ -26,14 +26,18 @@ bookApp.LibraryView = Backbone.View.extend({
             if ($this.val() !== '') {
                 console.log($this.val());
                 console.log($id);
-                newBook[$id] = $this.val();
-                console.log(newBook);
+                formValues[$id] = $this.val();
+                console.log(formValues);
             }
         });
 
         // save to library
-        this.collection.add(new bookApp.Book(newBook));
-        console.log(this.collection);
+        if (!jQuery.isEmptyObject(formValues)) {
+            newBook = new bookApp.Book(formValues);
+            this.collection.add(newBook);
+            newBook.save();
+        }
+        
     },
 
     // render library by rendering each book in its collection
