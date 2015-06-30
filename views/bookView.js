@@ -20,4 +20,14 @@ bookApp.BookView = Backbone.View.extend({
         this.model.destroy();
         this.remove();
     },
+
+    // BAN THIS BOOK function
+    banBook: function() {
+        this.model.burn();
+    },
+
+    burn: function() {
+        // @TODO: fire animation, listener to destroy on burn
+    }
+
 });
