@@ -3,11 +3,23 @@ var bookApp = bookApp || {};
 bookApp.LibraryView = Backbone.View.extend({
     el: '#books',
 
-    initialize: function( initialBooks ) {
-        this.collection = new bookApp.Library( initialBooks );
-        this.listenTo( this.collection, 'add', this.renderBook );
+    // front end app
+    // initialize: function( initialBooks ) {
+    //     this.collection = new bookApp.Library( initialBooks );
+    //     this.listenTo( this.collection, 'add', this.renderBook );
+    //     this.render();
+    // },
+
+    // server side app
+    initialize: function(initialBooks) {                    // UPDATED
+        this.collection = new bookApp.Library(initialBooks);    // UPDATED
+        this.collection.fetch({reset: true});   // NEW
         this.render();
+
+        this.listenTo( this.collection, 'add', this.renderBook );
+        this.listenTo( this.collection, 'reset', this.render ); // NEW
     },
+
 
     events: {
         'click #add': 'addBook'

@@ -1,6 +1,7 @@
 var bookApp = bookApp || {};
 
 $(function() {
+	// front end initial books data
     var books = [
         { title: 'Slam it to your left', author: 'Baby Spice', releaseDate: '2008', keywords: 'JavaScript Programming' },
         { title: 'If you\'re having a good time', author: 'Alex MacCaw', releaseDate: '2012', keywords: 'CoffeeScript Programming' },
@@ -10,4 +11,6 @@ $(function() {
     ];
 
     new bookApp.LibraryView( books );
+
+    // new bookApp.LibraryView();
 });
